@@ -36,48 +36,37 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 				// ==> c'est l'objet departement(le master) qui va mettre a jour l'association
 				//Rappel : la classe qui contient mappedBy represente le bout Slave
 				//Rappel : Dans une relation oneToMany le mappedBy doit etre du cote one.
-				Entreprise entrepriseManagedEntity = entrepriseRepoistory.findById(entrepriseId).orElse(null);
-				Departement depManagedEntity = deptRepoistory.findById(depId).orElse(null);
+				Entreprise entrepriseManagedEntity = entrepriseRepoistory.findById(entrepriseId).get();
+				Departement depManagedEntity = deptRepoistory.findById(depId).get();
 				
-				if (entrepriseManagedEntity != null && depManagedEntity != null) {
-					depManagedEntity.setEntreprise(entrepriseManagedEntity);
-					deptRepoistory.save(depManagedEntity);
-				}
-				
+				depManagedEntity.setEntreprise(entrepriseManagedEntity);
+				deptRepoistory.save(depManagedEntity);
 		
 	}
 	
 	public List<String> getAllDepartementsNamesByEntreprise(int entrepriseId) {
-		Entreprise entrepriseManagedEntity = entrepriseRepoistory.findById(entrepriseId).orElse(null);
+		Entreprise entrepriseManagedEntity = entrepriseRepoistory.findById(entrepriseId).get();
 		List<String> depNames = new ArrayList<>();
-		if (entrepriseManagedEntity != null) {
-			for(Departement dep : entrepriseManagedEntity.getDepartements()){
-				depNames.add(dep.getName());
-			}
+		for(Departement dep : entrepriseManagedEntity.getDepartements()){
+			depNames.add(dep.getName());
 		}
+		
 		return depNames;
 	}
 
 	@Transactional
 	public void deleteEntrepriseById(int entrepriseId) {
-		Entreprise entreprise = entrepriseRepoistory.findById(entrepriseId).orElse(null);
-		if (entreprise != null) {
-			entrepriseRepoistory.delete(entreprise);
-		}	
+		entrepriseRepoistory.delete(entrepriseRepoistory.findById(entrepriseId).get());	
 	}
 
 	@Transactional
 	public void deleteDepartementById(int depId) {
-		Departement dep = deptRepoistory.findById(depId).orElse(null);
-		if (dep != null) {
-			deptRepoistory.delete(dep);
-		}
-		
+		deptRepoistory.delete(deptRepoistory.findById(depId).get());	
 	}
 
 
 	public Entreprise getEntrepriseById(int entrepriseId) {
-		return entrepriseRepoistory.findById(entrepriseId).orElse(null);	
+		return entrepriseRepoistory.findById(entrepriseId).get();	
 	}
 
 }
