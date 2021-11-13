@@ -8,12 +8,5 @@ import tn.esprit.spring.entities.Contrat;
 public interface IContratService {
 	
 	
-	public List<Contrat> getAllContrats();
-
-
-	
-	
-	
-
-	
+	List<Contrat> retrieveAllContrats(); 
 }
