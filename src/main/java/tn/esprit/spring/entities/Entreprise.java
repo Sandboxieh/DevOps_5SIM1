@@ -1,88 +1,93 @@
 package tn.esprit.spring.entities;
 
+
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table (name = "T_ENTREPRISE")
 public class Entreprise implements Serializable{
 	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 3152690779535828408L;
-
+	private static final long serialVersionUID = 3009482349808085736L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@Column(name="ID")
+	private long idEntreprise;
 	
-	private String name;
-	
+	@Column(name="NAME")
+	private String nameEntreprise;
 	
 	private String raisonSocial;
 	
-	@OneToMany(mappedBy="entreprise", 
-			cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, 
-			fetch=FetchType.EAGER)
-	private List<Departement> departements = new ArrayList<>();
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="entreprise")
+	private Set<Departement> departement;
 
-	public Entreprise() {
-		super();
+
+	public Long getIdEntreprise() {
+		return idEntreprise;
 	}
 
-	public Entreprise(String name, String raisonSocial) {
-		this.name = name;
-		this.raisonSocial = raisonSocial;
+
+	public void setIdEntreprise(Long idEntreprise) {
+		this.idEntreprise = idEntreprise;
 	}
 
-	public int getId() {
-		return id;
+
+	public String getNameEntreprise() {
+		return nameEntreprise;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+
+	public void setNameEntreprise(String nameEntreprise) {
+		this.nameEntreprise = nameEntreprise;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public String getRaisonSocial() {
 		return raisonSocial;
 	}
 
+
 	public void setRaisonSocial(String raisonSocial) {
 		this.raisonSocial = raisonSocial;
 	}
 
-	public List<Departement> getDepartements() {
-		return departements;
-	}
 
-	public void setDepartements(List<Departement> departements) {
-		this.departements = departements;
-	}
-	
-	
-	public void addDepartement(Departement departement){
-		departement.setEntreprise(this);
-		this.departements.add(departement);
+	public Set<Departement> getDepartement() {
+		return departement;
 	}
 
 
+	public void setDepartement(Set<Departement> departement) {
+		this.departement = departement;
+	}
 
 
+	public Entreprise() {
+		super();
+	}
+
+
+	public Entreprise(Long idEntreprise, String nameEntreprise, String raisonSocial,
+			Set<tn.esprit.spring.entity.Departement> departement) {
+		super();
+		this.idEntreprise = idEntreprise;
+		this.nameEntreprise = nameEntreprise;
+		this.raisonSocial = raisonSocial;
+		this.departement = departement;
+	}
 }

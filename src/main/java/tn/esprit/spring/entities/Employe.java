@@ -1,167 +1,112 @@
 package tn.esprit.spring.entities;
 
-import java.io.Serializable;
-import java.util.List;
 
+import java.io.Serializable;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.Pattern;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-public class Employe implements Serializable {
-	
-	private static final long serialVersionUID = -1396669830860400871L;
+@Table (name = "T_EMPLOYE")
+@JsonIgnoreProperties
+public class Employe implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@Column(name="ID")
+	private long idEmploye;
 	
-	private String prenom;
+	@Column(name="NOM")
+	private String nomEmploye;
 	
-	private String nom;
+	@Column(name="PRENOM")
+	private String prenomEmploye;
 	
-	//@Column(unique=true)
-	//@Pattern(regex=".+\@.+\..+")
-	private String email;
-
-	private String password;
+	@Column(name="EMAIL")
+	private String emailEmploye;
 	
 	private boolean actif;
 	
-	@Enumerated(EnumType.STRING)
-	//@NotNull
-	private Role role;
+	@Enumerated (EnumType.STRING)
+	@Column(name="ROLE")
+	private Role roleEmploye;
 	
-	//@JsonBackReference  
+	@Column(name="PASSWORD")
+	private String password;
+	
+	
+	@OneToOne
+	private Contrat contrat; 
+	
+	@OneToMany (mappedBy="employe", cascade = CascadeType.ALL)
+	private Set<Timesheet> timesheet;
+	
 	@JsonIgnore
-	@ManyToMany(mappedBy="employes",fetch=FetchType.EAGER )
-	//@NotNull
-	private List<Departement> departements;
-	
-	@JsonIgnore
-	//@JsonBackReference
-	@OneToOne(mappedBy="employe")
-	private Contrat contrat;
-	
-	@JsonIgnore
-	//@JsonBackReference
-	@OneToMany(mappedBy="employe")
-	private List<Timesheet> timesheets;
-	
-	
-	public Employe() {
-		super();
-	}
-	
-		
-	public Employe(int id, String prenom, String nom, String email, String password, boolean actif, Role role) {
-		super();
-		this.id = id;
-		this.prenom = prenom;
-		this.nom = nom;
-		this.email = email;
-		this.password = password;
-		this.actif = actif;
-		this.role = role;
+	@ManyToMany(mappedBy="employe", cascade = CascadeType.ALL)
+	private Set<Departement> departement;
+
+	public Long getIdEmploye() {
+		return idEmploye;
 	}
 
-
-
-	public Employe(String nom, String prenom, String email, String password, boolean actif, Role role) {
-		this.nom = nom;
-		this.prenom = prenom;
-		this.email = email;
-		this.password = password;
-		this.actif = actif;
-		this.role = role;
-	}
-	
-	public Employe(String nom, String prenom, String email, boolean actif, Role role) {
-		this.nom = nom;
-		this.prenom = prenom;
-		this.email = email;
-		this.actif = actif;
-		this.role = role;
-	}
-	
-	public int getId() {
-		return id;
+	public void setIdEmploye(Long idEmploye) {
+		this.idEmploye = idEmploye;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public String getNomEmploye() {
+		return nomEmploye;
 	}
 
-	public String getPrenom() {
-		return prenom;
+	public void setNomEmploye(String nomEmploye) {
+		this.nomEmploye = nomEmploye;
 	}
 
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
+	public String getPrenomEmploye() {
+		return prenomEmploye;
 	}
 
-	public String getNom() {
-		return nom;
+	public void setPrenomEmploye(String prenomEmploye) {
+		this.prenomEmploye = prenomEmploye;
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
+	public String getEmailEmploye() {
+		return emailEmploye;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-	 
-	public String getPassword() {
-		return password;
-	}
- 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setEmailEmploye(String emailEmploye) {
+		this.emailEmploye = emailEmploye;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-
-
-
-	public boolean isActif() {
+	public boolean getActif() {
 		return actif;
 	}
-
 
 	public void setActif(boolean actif) {
 		this.actif = actif;
 	}
 
-
-	public Role getRole() {
-		return role;
+	public Role getRoleEmploye() {
+		return roleEmploye;
 	}
 
-	public void setRole(Role role) {
-		this.role = role;
-	}
-
-	public List<Departement> getDepartements() {
-		return departements;
-	}
-
-	public void setDepartements(List<Departement> departement) {
-		this.departements = departement;
+	public void setRoleEmploye(Role roleEmploye) {
+		this.roleEmploye = roleEmploye;
 	}
 
 	public Contrat getContrat() {
@@ -172,21 +117,57 @@ public class Employe implements Serializable {
 		this.contrat = contrat;
 	}
 
-	public List<Timesheet> getTimesheets() {
-		return timesheets;
+
+	public Set<Departement> getDepartement() {
+		return departement;
 	}
 
-	public void setTimesheets(List<Timesheet> timesheets) {
-		this.timesheets = timesheets;
+	public void setDepartement(Set<Departement> departement) {
+		this.departement = departement;
 	}
 
-
-	@Override
-	public String toString() {
-		return "Employe [id=" + id + ", prenom=" + prenom + ", nom=" + nom + ", email=" + email + ", password="
-				+ password + ", actif=" + actif + ", role=" + role + "]";
+	public Set<Timesheet> getTimesheet() {
+		return timesheet;
 	}
+
+	public void setTimesheet(Set<Timesheet> timesheet) {
+		this.timesheet = timesheet;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	
-	
-	
+	public Employe() {
+		super();
+	}
+
+	public Employe(long idEmploye, String nomEmploye, String prenomEmploye, String emailEmploye, boolean actif,
+			Role roleEmploye, String password) {
+		super();
+		this.idEmploye = idEmploye;
+		this.nomEmploye = nomEmploye;
+		this.prenomEmploye = prenomEmploye;
+		this.emailEmploye = emailEmploye;
+		this.actif = actif;
+		this.roleEmploye = roleEmploye;
+		this.password = password;
+	}
+
+	public Employe(String nomEmploye, String prenomEmploye, String emailEmploye, boolean actif, Role roleEmploye,
+			String password) {
+		super();
+		this.nomEmploye = nomEmploye;
+		this.prenomEmploye = prenomEmploye;
+		this.emailEmploye = emailEmploye;
+		this.actif = actif;
+		this.roleEmploye = roleEmploye;
+		this.password = password;
+	}
+
 }
