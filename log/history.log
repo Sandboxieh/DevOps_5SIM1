@@ -1,0 +1,39 @@
+2021-11-14 19:21:09.521  INFO 18168 --- [main] t.e.s.service.ContratServiceImplTest     : Starting ContratServiceImplTest on DESKTOP-B9SLOBR with PID 18168 (started by Fyras in C:\Users\Fyras\Desktop\DevOps_5SIM1)
+2021-11-14 19:21:09.525  INFO 18168 --- [main] t.e.s.service.ContratServiceImplTest     : No active profile set, falling back to default profiles: default
+2021-11-14 19:21:11.266  INFO 18168 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-11-14 19:21:11.458  INFO 18168 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 161ms. Found 1 repository interfaces.
+2021-11-14 19:21:12.402  INFO 18168 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-11-14 19:21:12.982  INFO 18168 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-11-14 19:21:13.215  INFO 18168 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.8.Final}
+2021-11-14 19:21:13.654  INFO 18168 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2021-11-14 19:21:15.094  INFO 18168 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-11-14 19:21:15.541  INFO 18168 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-11-14 19:21:15.589  INFO 18168 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-11-14 19:21:18.250  INFO 18168 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-11-14 19:21:18.271  INFO 18168 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-11-14 19:21:19.742  WARN 18168 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-11-14 19:21:20.384  INFO 18168 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-11-14 19:21:21.441  INFO 18168 --- [main] t.e.s.service.ContratServiceImplTest     : Started ContratServiceImplTest in 12.821 seconds (JVM running for 15.091)
+2021-11-14 19:21:22.362  INFO 18168 --- [main] t.e.spring.services.ContratServiceImpl   : c +++ :tn.esprit.spring.entities.Contrat@315cf170
+2021-11-14 19:21:22.364  INFO 18168 --- [main] t.e.spring.services.ContratServiceImpl   : c +++ :tn.esprit.spring.entities.Contrat@69ba72da
+2021-11-14 19:21:22.365  INFO 18168 --- [main] t.e.spring.services.ContratServiceImpl   : c +++ :tn.esprit.spring.entities.Contrat@2e1ba142
+2021-11-14 19:21:22.366  INFO 18168 --- [main] t.e.spring.services.ContratServiceImpl   : c +++ :tn.esprit.spring.entities.Contrat@abc7005
+2021-11-14 19:21:22.366  INFO 18168 --- [main] t.e.spring.services.ContratServiceImpl   : c +++ :tn.esprit.spring.entities.Contrat@595ec862
+2021-11-14 19:21:22.366  INFO 18168 --- [main] t.e.spring.services.ContratServiceImpl   : c +++ :tn.esprit.spring.entities.Contrat@63c84d31
+2021-11-14 19:21:22.367  INFO 18168 --- [main] t.e.spring.services.ContratServiceImpl   : c +++ :tn.esprit.spring.entities.Contrat@102af1bb
+2021-11-14 19:21:22.367  INFO 18168 --- [main] t.e.spring.services.ContratServiceImpl   : c +++ :tn.esprit.spring.entities.Contrat@797f97e3
+2021-11-14 19:21:22.368  INFO 18168 --- [main] t.e.spring.services.ContratServiceImpl   : c +++ :tn.esprit.spring.entities.Contrat@56cd5d76
+2021-11-14 19:21:22.368  INFO 18168 --- [main] t.e.spring.services.ContratServiceImpl   : c +++ :tn.esprit.spring.entities.Contrat@77cd235b
+2021-11-14 19:21:22.368  INFO 18168 --- [main] t.e.spring.services.ContratServiceImpl   : c +++ :tn.esprit.spring.entities.Contrat@302da330
+2021-11-14 19:21:22.368  INFO 18168 --- [main] t.e.spring.services.ContratServiceImpl   : c +++ :tn.esprit.spring.entities.Contrat@3568ea59
+2021-11-14 19:21:22.369  INFO 18168 --- [main] t.e.spring.services.ContratServiceImpl   : c +++ :tn.esprit.spring.entities.Contrat@9f2376f
+2021-11-14 19:21:22.369  INFO 18168 --- [main] t.e.spring.services.ContratServiceImpl   : c +++ :tn.esprit.spring.entities.Contrat@173b1af1
+2021-11-14 19:21:22.369  INFO 18168 --- [main] t.e.spring.services.ContratServiceImpl   : c +++ :tn.esprit.spring.entities.Contrat@389a1e34
+2021-11-14 19:21:22.369  INFO 18168 --- [main] t.e.spring.services.ContratServiceImpl   : c +++ :tn.esprit.spring.entities.Contrat@204b0f07
+2021-11-14 19:21:22.370  INFO 18168 --- [main] t.e.spring.services.ContratServiceImpl   : c +++ :tn.esprit.spring.entities.Contrat@6f68756d
+2021-11-14 19:21:22.370  INFO 18168 --- [main] t.e.spring.services.ContratServiceImpl   : c +++ :tn.esprit.spring.entities.Contrat@359865a2
+2021-11-14 19:21:22.370  INFO 18168 --- [main] t.e.spring.services.ContratServiceImpl   : c +++ :tn.esprit.spring.entities.Contrat@5d9bb69b
+2021-11-14 19:21:22.598  INFO 18168 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-11-14 19:21:22.601  INFO 18168 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-11-14 19:21:22.607  INFO 18168 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-11-14 19:21:22.646  INFO 18168 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
