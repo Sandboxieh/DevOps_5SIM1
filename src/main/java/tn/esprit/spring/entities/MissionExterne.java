@@ -2,6 +2,7 @@ package tn.esprit.spring.entities;
 
 import javax.persistence.Entity;
 
+
 @Entity
 public class MissionExterne extends Mission {
 	
@@ -44,8 +45,6 @@ public class MissionExterne extends Mission {
 	public void setTauxJournalierMoyen(float tauxJournalierMoyen) {
 		this.tauxJournalierMoyen = tauxJournalierMoyen;
 	}
-	
-	
 	
 
 }

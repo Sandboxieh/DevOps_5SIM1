@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+
 @Entity
 public class Mission implements Serializable {
 
@@ -79,6 +80,4 @@ public class Mission implements Serializable {
 		this.timesheets = timesheets;
 	}
 	
-	
-
 }

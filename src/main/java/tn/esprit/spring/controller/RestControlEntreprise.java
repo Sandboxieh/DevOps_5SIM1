@@ -1,5 +1,6 @@
 package tn.esprit.spring.controller;
 
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,9 +12,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.spring.entities.Entreprise;
+import tn.esprit.spring.entities.EntrepriseDTO;
 import tn.esprit.spring.services.IEmployeService;
 import tn.esprit.spring.services.IEntrepriseService;
 import tn.esprit.spring.services.ITimesheetService;
+
 
 @RestController
 public class RestControlEntreprise {
@@ -25,17 +28,16 @@ public class RestControlEntreprise {
 	IEntrepriseService ientrepriseservice;
 	@Autowired
 	ITimesheetService itimesheetservice;
-		
-
+	
+	// Ajouter Entreprise : http://localhost:8081/SpringMVC/servlet/ajouterEntreprise
+	
 	@PostMapping("/ajouterEntreprise")
 	@ResponseBody
-	public int ajouterEntreprise(@RequestBody Entreprise ssiiConsulting) {
+	public int ajouterEntreprise(@RequestBody EntrepriseDTO ssiiConsulting) {
 		ientrepriseservice.ajouterEntreprise(ssiiConsulting);
 		return ssiiConsulting.getId();
 	}
 	
-	
-    
     // http://localhost:8081/SpringMVC/servlet/deleteEntrepriseById/1
     @DeleteMapping("/deleteEntrepriseById/{identreprise}") 
 	@ResponseBody 
@@ -51,6 +53,11 @@ public class RestControlEntreprise {
 
 		return ientrepriseservice.getEntrepriseById(entrepriseId);
 	}
-    
-
+	
+ 	 // http://localhost:8081/SpringMVC/servlet/getAllDepartementsNamesByEntreprise/1
+    @GetMapping(value = "getAllDepartementsNamesByEntreprise/{identreprise}")
+    @ResponseBody
+	public List<String> getAllDepartementsNamesByEntreprise(@PathVariable("identreprise") int entrepriseId) {
+		return ientrepriseservice.getAllDepartementsNamesByEntreprise(entrepriseId);
+	}
 }

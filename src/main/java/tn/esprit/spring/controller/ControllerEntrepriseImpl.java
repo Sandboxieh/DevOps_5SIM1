@@ -1,10 +1,12 @@
 package tn.esprit.spring.controller;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import tn.esprit.spring.entities.Entreprise;
+import tn.esprit.spring.entities.EntrepriseDTO;
 import tn.esprit.spring.services.IEmployeService;
 import tn.esprit.spring.services.IEntrepriseService;
 import tn.esprit.spring.services.ITimesheetService;
@@ -19,22 +21,21 @@ public class ControllerEntrepriseImpl{
 	@Autowired
 	ITimesheetService itimesheetservice;
 
-	public int ajouterEntreprise(Entreprise ssiiConsulting) {
+	public int ajouterEntreprise(EntrepriseDTO ssiiConsulting) {
 		ientrepriseservice.ajouterEntreprise(ssiiConsulting);
 		return ssiiConsulting.getId();
 	}
-
+	
 	public void deleteEntrepriseById(int entrepriseId)
 	{
 		ientrepriseservice.deleteEntrepriseById(entrepriseId);
 	}
-	public Entreprise getEntrepriseById() {
+	public Entreprise getEntrepriseById(int entrepriseId) {
 
-		return ientrepriseservice.getEntrepriseById(1);
+		return ientrepriseservice.getEntrepriseById(entrepriseId);
 	}
 	
 	public List<String> getAllDepartementsNamesByEntreprise(int entrepriseId) {
 		return ientrepriseservice.getAllDepartementsNamesByEntreprise(entrepriseId);
 	}
-
 }

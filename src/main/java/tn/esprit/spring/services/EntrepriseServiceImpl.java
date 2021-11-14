@@ -2,17 +2,19 @@ package tn.esprit.spring.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Entreprise;
-import tn.esprit.spring.repository.DepartementRepository;
-import tn.esprit.spring.repository.EntrepriseRepository;
+import tn.esprit.spring.entities.EntrepriseDTO;
 
+import org.apache.log4j.Logger;
+import tn.esprit.spring.repository.EntrepriseRepository;
+import org.apache.log4j.LogManager;
 
 @Service
 public class EntrepriseServiceImpl implements IEntrepriseService {
@@ -20,99 +22,85 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 	@Autowired
     EntrepriseRepository entrepriseRepoistory;
 	@Autowired
-	DepartementRepository deptRepoistory;
+    EntrepriseConverter converter;
+	private static final Logger l = LogManager.getLogger(EntrepriseServiceImpl.class);
 	
-	private static final Logger l = Logger.getLogger(EntrepriseServiceImpl.class);
-
-
-	public Integer ajouterEntreprise(Entreprise entreprise) {
-		l.debug("methode ajouterEntreprise");
-		try {
-		entrepriseRepoistory.save(entreprise);
-		l.info("entreprise ajoutée avec id = "+entreprise.getId());
-		return entreprise.getId();
-		} catch (Exception e) {
-		       l.error("erreur methode ajouterEntreprise :" +e);	
-		       return null;       
-				}	
-	}
-
-	public int ajouterDepartement(Departement dep) {
-		deptRepoistory.save(dep);
-		return dep.getId();
-	}
+	// Méthode qui permet d'a
 	
-	public void affecterDepartementAEntreprise(int depId, int entrepriseId) {
-		
-				Entreprise entrepriseManagedEntity = entrepriseRepoistory.findById(entrepriseId).orElse(null);
-				Departement depManagedEntity = deptRepoistory.findById(depId).orElse(null);
-				
-				depManagedEntity.setEntreprise(entrepriseManagedEntity);
-				deptRepoistory.save(depManagedEntity);
-	}
-	
-	
-	public List<String> getAllDepartementsNamesByEntreprise(int entrepriseId) {
-		l.debug("methode getAllDepartementsNamesByEntreprise ");
-		List<String> depNames = new ArrayList<String>();
-		try {
-			Entreprise entrepriseManagedEntity = entrepriseRepoistory.findById(entrepriseId).orElse(null);
-			
-			if(entrepriseManagedEntity!=null && entrepriseManagedEntity.getDepartements()!=null){
-			for(Departement dep : entrepriseManagedEntity.getDepartements()){
-				depNames.add(dep.getName());
-			}
-			l.debug("getAllDepartementsNamesByEntreprise fini avec succes ");
-			return depNames;
-			}
-			else {
-				l.error("erreur methode getAllDepartementsNamesByEntreprise : " );
-				return depNames;
-			}
-		} catch (Exception e) {
-			l.error("erreur methode getAllDepartementsNamesByEntreprise : " +e);
-			return depNames;
-		}
-	}
-
 	@Transactional
-	public int deleteEntrepriseById(int entrepriseId) {
-		l.debug("methode deleteEntrepriseById ");
+	public Integer ajouterEntreprise(EntrepriseDTO entreprise) {
 		
-		try {
-			if(entrepriseRepoistory.findById(entrepriseId).orElse(null)!=null){
-			entrepriseRepoistory.delete(entrepriseRepoistory.findById(entrepriseId).orElse(null));
-			l.debug("deleteEntrepriseById fini avec succes ");
-			return 0;}else {
-				l.error("erreur methode deleteEntrepriseById : "+entrepriseId );
-				return -1;
-			}
+		try{
+			l.info("In methode ajouterEntreprise()");
+			Entreprise en = converter.entrepriseTodo(entreprise);
+			entrepriseRepoistory.save(en);
+			l.debug("entreprise ajouté et portant la ref = "+entreprise.getId());
+			l.info("Out methode ajouterEntreprise()");
+			return entreprise.getId();
 		} catch (Exception e) {
-			l.error("erreur methode deleteEntrepriseById : " +e);
-			return -1;
-		}		
-	}
-
-	@Transactional
-	public int deleteDepartementById(int depId) {
-		deptRepoistory.delete(deptRepoistory.findById(depId).orElse(null));
-		return depId;	
-	}
-
-	public Entreprise getEntrepriseById(int entrepriseId) {
-		l.debug("methode getEntrepriseById ");
-		
-		
-		try {
-			Entreprise et= entrepriseRepoistory.findById(entrepriseId).orElse(null);
-			l.debug("getEntrepriseById fini avec succes ");
-			return et;
-		} catch (Exception e) {
-			l.error("erreur methode getEntrepriseById : " +e);
+			l.error("erreur dans la methode ajouterEntreprise() :"+e);
 			return null;
 		}	
 		
+	}
+
+	
+	@Transactional
+	public List<String> getAllDepartementsNamesByEntreprise(int entrepriseId) {
+		List<String> depNames = new ArrayList<>();
+		try{
+			l.info("In methode getAllDepartementsNamesByEntreprise() : ");
+			Optional<Entreprise> entrepriseManagedEntity = entrepriseRepoistory.findById(entrepriseId);
+			if(entrepriseManagedEntity.isPresent()) {
+				for(Departement dep : entrepriseManagedEntity.get().getDepartements()){
+					depNames.add(dep.getName());
+				}
+			}
+			l.debug("Récupération des departements");
+			l.info("Out methode getAllDepartementsNamesByEntreprise() ");
+			return depNames;
+		} catch (Exception e) {
+			l.error("erreur dans la methode getAllDepartementsNamesByEntreprise() :"+e);
+			depNames.clear();
+			return depNames;
+		}
 		
 	}
 
+	@Transactional
+	public Integer deleteEntrepriseById(int entrepriseId) {
+		try {
+			l.info("In methode deleteEntrepriseById() ");
+			Optional<Entreprise> entreprise=entrepriseRepoistory.findById(entrepriseId);
+			if (entreprise.isPresent()) {
+				entrepriseRepoistory.delete(entreprise.get());	
+			} 
+			l.debug("Supprission de l'entreprise avec l'id"+entrepriseId);
+			l.info("Out deleteEntrepriseById()");
+			return 1;
+		} catch (Exception e) {
+			l.error("erreur methode deleteEntrepriseById() :" + e);
+			return 0;
+		}
+	}
+	
+
+	@Transactional
+	public Entreprise getEntrepriseById(int entrepriseId) {
+		Entreprise en = null;
+		try {
+			l.info("In methode getEntrepriseById() : ");
+			Optional<Entreprise> entreprise = entrepriseRepoistory.findById(entrepriseId);
+			if (entreprise.isPresent()) {
+				en=entreprise.get();
+			}
+			l.debug("Récupération de l'entreprise par id");
+			l.info("Out methode getEntrepriseById() ");
+			return en;
+		} catch (Exception e) {
+			l.error("erreur methode deleteEntrepriseById() :" + e);
+			return null;
+		}
+	}
+	
 }

@@ -12,15 +12,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+
 @Entity
 public class Entreprise implements Serializable{
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 3152690779535828408L;
 
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
@@ -33,7 +30,7 @@ public class Entreprise implements Serializable{
 	@OneToMany(mappedBy="entreprise", 
 			cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, 
 			fetch=FetchType.EAGER)
-	private List<Departement> departements = new ArrayList();
+	private List<Departement> departements = new ArrayList<>();
 
 	public Entreprise() {
 		super();
@@ -81,8 +78,5 @@ public class Entreprise implements Serializable{
 		departement.setEntreprise(this);
 		this.departements.add(departement);
 	}
-
-
-
 
 }
