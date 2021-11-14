@@ -6,50 +6,69 @@ import org.springframework.transaction.annotation.Transactional;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import tn.esprit.spring.entities.Contrat;
+
 import tn.esprit.spring.repository.ContratRepository;
 import java.util.List;
-import java.util.Optional;
+
 
 @Transactional
 @Service
 public class ContratServiceImpl implements IContratService {
 	@Autowired
 	ContratRepository contratRepository;
-	static final Logger L = LogManager.getLogger(ContratServiceImpl.class);
+	static final Logger l = LogManager.getLogger(ContratServiceImpl.class);
 	@Override
-	public Contrat ajouterContrat(Contrat contrat) {
+	public Contrat addContrat(Contrat contrat) {
 	
-		contratRepository.save(contrat);
-		
-		return contrat;
+		l.info("In addContract() : ");
+		Contrat saved = contratRepository.save(contrat); 
+		l.info("Out of addContract() : saved Contract: "+saved);
+		return saved; 
 	}
 
 	@Override
 	public void deleteContratById(Long id) {
 
 		
+		l.info("In deleteContrat() : ");
 		contratRepository.deleteById(id);
+		
+		l.info("Out of deleteContrat() : deleted Contract id : "+id);
+		
 	}
+	
 
 	 @Override
 	public List<Contrat> retrieveAllContrats(){
-	List<Contrat> contrat = (List<Contrat>) contratRepository.findAll();
+	List<Contrat> contrats = null; 
+		try {
+	
+			l.info("In retrieveAllContrats() ");
+			contrats = (List<Contrat>) contratRepository.findAll();  
+			for (Contrat Contrat : contrats) {
+				l.debug("Contrat +++: "+Contrat);
+			} 
+			l.info("Out of retrieveAllContrats() with success ");
+		}catch (Exception e) {
+			l.error("Error in  retrieveAllContrats() with Error: "+ e);
+		}
 
-	for (Contrat c : contrat){
-		L.info("c +++ :" + c);
-	}
-	return contrat;
-
+		return Contrats;
 	} 
 
 	@Override
 	public Contrat updateContrat(Contrat c) {
-		
-		return contratRepository.save(c);
+		l.info("In updateContract() : ");
+		Contrat saved = contratRepository.save(c); 
+		l.info("Out of updateContract() : updated Contract: "+saved);
+		return saved; 
 	}
-	@Override	
-	public  Optional<Contrat> findById(Long idContrat){
-		 return contratRepository.findById(idContrat);
-		
+
+	@Override
+	public Contrat retrieveContratByID(Long id) {
+		l.info("In retrieveContratByID() : ");
+		Contrat u =  contratRepository.findById(id).orElse(new Contrat()); 
+		l.info("Out of retrieveContratByID() : found Contract : "+u);
+		return u; 
 	}
 }

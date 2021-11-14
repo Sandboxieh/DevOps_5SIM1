@@ -10,25 +10,41 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
-
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.TestMethodOrder;
 import tn.esprit.spring.TimesheetApplication;
 import tn.esprit.spring.entities.Contrat;
 import tn.esprit.spring.services.ContratServiceImpl;
 import tn.esprit.spring.services.IContratService;
 import tn.esprit.spring.repository.ContratRepository;
+import java.util.List;
 
 @ContextConfiguration(classes = TimesheetApplication.class)
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ContratServiceImpl.class)
+@TestMethodOrder(OrderAnnotation.class)
 public class ContratServiceImplTest {
-	private static final long DEFAULT_TIMEOUT = 10000;
+	
 	static final Logger l = LogManager.getLogger(ContratServiceImplTest.class);
 	@Autowired
 	IContratService cs;
 	ContratRepository cr;
 	
+
 		@Test
-		public void testAjouterContrat() {
+		@Order(1)
+		public void testretrieveAllContrats(){
+			l.debug("RETREIVING ALL CONTRACTs");
+			List<Contrat> listContrats =cs.retrieveAllContrats();
+			Assertions.assertNotEquals(0,listContrats.size());
+			l.debug("CONTRACTS RETREIVED SUCCESFULY");
+		}
+
+		@Test
+		@Order(2)
+		public void testAddContrat() {
 		l.debug("ADD CONTRACT TEST");
 		Contrat contrat = new Contrat() ;
 		//contrat.setReferenceContrat((long) 1);
@@ -36,36 +52,44 @@ public class ContratServiceImplTest {
 		contrat.setTypeContrat("CDI");
 		contrat.setSalaire(1500);
 		assertNotNull(contrat);
-		cs.ajouterContrat(contrat);	
+		Contrat u_saved=cs.addContrat(contrat);	
+		Assertions.assertEquals(contrat,u_saved);
 		l.debug("CONTRAT ADDED SUCCESFULY");
 		}
-	
-		
-	
-		@Test
-		public void testretrieveAllContrats(){
-			l.debug("RETREIVING ALL CONTRACTs");
-			cs.retrieveAllContrats();
-			l.debug("CONTRACTS RETREIVED SUCCESFULY");
-		}
-		 
 		
 		
-		/* @Test
+		 @Test
+		 @Order(3)
 		public void testUpdateContrat(){
-			Contrat ct = cs.findById((long) 2).get();
+			Contrat ct = cs.retrieveContratByID((long) 1);
 			ct.setTypeContrat("UPDATED");
-			ct.setDateDebutContrat(null);
-			ct.setSalaire(1500);
-			cr.deleteById((long)2);
-			cr.save(ct);
-		} */
+			ct.setDateDebutContrat(new java.util.Date());
+			List<Contrat> listContrats =cs.retrieveAllContrats();
+			int x = (int) listContrats.size();
+			ct.setSalaire(x*1000);
+			Contrat u_saved=cs.updateContrat(ct);
+			Assertions.assertNotEquals(ct,u_saved);
+			
+		} 
+
+		@Test
+		@Order(4)
+		public void testRetrieveContrat() {
+		Contrat u =  cs.retrieveContratByID((long)1); 
+		Assertions.assertEquals(Long.parseLong("1"),u.getReferenceContrat());
+
+	}
 
 		 @Test
+		 @Order(5)
 		public void testdeleteContrat() {
 	    l.debug("TESTING DELETE CONTRACT");
-		cs.deleteContratById((long) 2);
+		List<Contrat> listContrats =cs.retrieveAllContrats();
+		Contrat cc =listContrats.get(listContrats.size()-1);
+	
+		cs.deleteContratById(cc.getReferenceContrat());
 		l.debug("CONTRACT DELETED SUCCESFULY");
+		//Assertions.assertEquals(-1,a);
 		} 
 	
 
