@@ -55,6 +55,9 @@ agent any
 		 		bat """mvn clean package -Dmaven.test.failure.ignore=true deploy:deploy-file -DgroupId=tn.esprit.spring -DartifactId=timesheet -Dversion=1.0-SNAPSHOT -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-snapshots/ -Dfile=target/timesheet-1.0-SNAPSHOT.jar"""
 		 	}
 		 }
+	
+
+
 
 	
 		stage('Sending Email'){
@@ -62,9 +65,8 @@ agent any
 			mail bcc: '', body: 'Build Success', cc: '', from: '', replyTo: '', subject: 'Jenkins', to: 'sandiehftw@gmail.com'
 			}
 		}
-	}
-	
-	    stage('Building our image') {
+
+		stage('Building our image') {
           steps { script { dockerImage= docker.build registry + ":$BUILD_NUMBER" } }
           }
 
@@ -72,10 +74,12 @@ agent any
           steps { script { docker.withRegistry( '', registryCredential) { dockerImage.push() } } }
           }
 
-        stage('Cleaning up') {
+		stage('Cleaning up') {
           steps { bat "docker rmi $registry:$BUILD_NUMBER" }
           }
 
+	}
+	
 
 
 	post{
@@ -87,6 +91,4 @@ agent any
 		}
 
 	}
-
-}
 }
