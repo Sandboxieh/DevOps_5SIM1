@@ -96,7 +96,7 @@ pipeline {
         
            stage('run images') { 
                 steps { 
-                    bat "docker container run --network timesheet-network --name timesheet-container -p 8083:8083 -d $registry:$BUILD_NUMBER"
+                    bat "docker container run --network timesheet-network --name timesheet-container -p 8088:8088 -d $registry:$BUILD_NUMBER"
                 }
            } 
 	}
