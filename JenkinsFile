@@ -12,21 +12,21 @@ agent any
 			}
 		}
 
-		stage ("Verification du  version Maven"){
+		stage ("Verification du version Maven"){
 			steps{
 				bat """mvn -version"""
 			}
 		}
 
 
-		 stage ("clean"){
+		 stage ("Cleaning"){
 		 	steps{
 		 		bat """mvn clean """
 		 	}
 		 }
 
 
- 		 stage ("creation de livrable"){
+ 		 stage ("Creation de livrable"){
 		 	steps{
 		 		bat """mvn package -Dmaven.test.skip=true"""
 		 	}
@@ -45,7 +45,7 @@ agent any
 		 	}
 		 }
 
-		 stage ("Deploiement "){
+		 stage ("Deploiement de livrable vers Nexus"){
 		 	steps{
 		 		bat """mvn clean package -Dmaven.test.failure.ignore=true deploy:deploy-file -DgroupId=tn.esprit.spring -DartifactId=timesheet -Dversion=1.0-SNAPSHOT -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-snapshots/ -Dfile=target/timesheet-1.0-SNAPSHOT.jar"""
 		 	}
@@ -54,9 +54,9 @@ agent any
 
 
 	
-		stage('email'){
+		stage('Sending Email'){
 			steps{
-			mail bcc: '', body: 'Build Success', cc: '', from: '', replyTo: '', subject: 'Jenkins', to: 'sandiehftw@gmail.com'
+			mail bcc: '', body: 'Build Success', cc: '', from: '', replyTo: '', subject: 'Jenkins Pipeline', to: 'sandiehftw@gmail.com'
 			}
 		}
 	}
