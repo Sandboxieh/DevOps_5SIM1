@@ -4,15 +4,13 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
  
-  <servers>
-
-    <server>
-      <id>nexus</id>
+<servers>
+   <server>
+      <id>nexus-snapshots</id>
       <username>admin</username>
-      <password>123456</password>
-    </server>
-
-  </servers>
+      <password>admin123</password>
+   </server>
+</servers>
 
  
   <profiles>
@@ -37,7 +35,7 @@
        <repository>
          <id>snapshots</id>
          <name>snapshots</name>
-         <url>http://localhost:8081/repository/snapshots/</url>
+         <url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
        </repository>
 	   
      </repositories>
@@ -48,7 +46,7 @@
        <repository>
          <id>realses</id>
          <name>realses</name>
-         <url>http://localhost:8081/repository/realses/</url>
+         <url>http://localhost:8081/nexus/content/repositories/releases/</url>
        </repository>
      </repositories>
    </profile>

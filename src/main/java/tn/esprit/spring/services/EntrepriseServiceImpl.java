@@ -84,7 +84,7 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 			entrepriseRepoistory.delete(entrepriseRepoistory.findById(entrepriseId).orElse(null));
 			l.debug("deleteEntrepriseById fini avec succes ");
 			return 0;}else {
-				l.error("erreur methode deleteEntrepriseById : " );
+				l.error("erreur methode deleteEntrepriseById : "+entrepriseId );
 				return -1;
 			}
 		} catch (Exception e) {
