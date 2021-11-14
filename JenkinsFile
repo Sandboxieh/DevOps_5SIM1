@@ -2,7 +2,7 @@ pipeline{
 
 
 agent any 
-	
+
 	stages{
 		stage ('Checkout GIT'){
 			steps{
@@ -36,6 +36,7 @@ agent any
 		 		bat """mvn test"""
 		 	}
 		 }
+
 
 
 		 stage ("Analyse avec Sonar"){
