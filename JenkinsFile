@@ -44,7 +44,6 @@ agent any
 		 	}
 		 }
 
-
 		 stage ("Deploiement "){
 		 	steps{
 		 		bat """mvn clean package -Dmaven.test.failure.ignore=true deploy:deploy-file -DgroupId=tn.esprit.spring -DartifactId=timesheet -Dversion=0.0.6-SNAPSHOT -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-snapshots/ -Dfile=target/timesheet-0.0.6-SNAPSHOT.jar"""
