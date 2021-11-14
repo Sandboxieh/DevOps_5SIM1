@@ -44,6 +44,7 @@ agent any
 		 		bat """mvn sonar:sonar"""
 		 	}
 		 }
+		 
 
 		 stage ("Deploiement "){
 		 	steps{
