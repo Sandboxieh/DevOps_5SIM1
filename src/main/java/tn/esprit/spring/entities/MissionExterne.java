@@ -39,7 +39,7 @@ public class MissionExterne extends Mission implements Serializable{
 	}
 
 	public MissionExterne(Long idMission, String nameMission, String descriptionMission,
-			Set<Timesheet> timesheet, tn.esprit.spring.entity.Departement departement) {
+			Set<Timesheet> timesheet, tn.esprit.spring.entities.Departement departement) {
 		super(idMission, nameMission, descriptionMission, timesheet, departement);
 	}
 

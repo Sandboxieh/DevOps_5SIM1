@@ -83,7 +83,7 @@ public class Entreprise implements Serializable{
 
 
 	public Entreprise(Long idEntreprise, String nameEntreprise, String raisonSocial,
-			Set<tn.esprit.spring.entity.Departement> departement) {
+			Set<tn.esprit.spring.entities.Departement> departement) {
 		super();
 		this.idEntreprise = idEntreprise;
 		this.nameEntreprise = nameEntreprise;

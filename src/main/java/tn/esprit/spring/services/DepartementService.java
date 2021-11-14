@@ -3,7 +3,7 @@ package tn.esprit.spring.services;
 import java.util.List;
 import java.util.Optional;
 
-import tn.esprit.spring.entity.Departement;
+import tn.esprit.spring.entities.Departement;
 
 public interface DepartementService {
 	public Departement addDepartement(Departement d);
