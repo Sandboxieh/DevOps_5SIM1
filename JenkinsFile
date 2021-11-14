@@ -2,7 +2,7 @@ pipeline{
 
 
 agent any 
-
+	
 	stages{
 		stage ('Checkout GIT'){
 			steps{
@@ -17,15 +17,16 @@ agent any
 				bat """mvn -version"""
 			}
 		}
-		
 
-		 stage ("Cleaning up"){
+
+		 stage ("clean"){
 		 	steps{
 		 		bat """mvn clean """
 		 	}
 		 }
 
- 		 stage ("Creation de Livrable"){
+
+ 		 stage ("creation de livrable"){
 		 	steps{
 		 		bat """mvn package -Dmaven.test.skip=true"""
 		 	}
@@ -44,15 +45,17 @@ agent any
 		 	}
 		 }
 
-		 stage ("Deploiement vers Nexus"){
+		 stage ("Deploiement "){
 		 	steps{
-		 		bat """mvn clean package -Dmaven.test.failure.ignore=true deploy:deploy-file -DgroupId=tn.esprit.spring -DartifactId=timesheet -Dversion=0.0.6-SNAPSHOT -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-snapshots/ -Dfile=target/timesheet-0.0.6-SNAPSHOT.jar"""
+		 		bat """mvn clean package -Dmaven.test.failure.ignore=true deploy:deploy-file -DgroupId=tn.esprit.spring -DartifactId=timesheet -Dversion=1.0-SNAPSHOT -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-snapshots/ -Dfile=target/timesheet-1.0-SNAPSHOT.jar"""
 		 	}
 		 }
 	
 
+
+
 	
-		stage('Sending email notification'){
+		stage('email'){
 			steps{
 			mail bcc: '', body: 'Build Success', cc: '', from: '', replyTo: '', subject: 'Jenkins', to: 'sandiehftw@gmail.com'
 			}
