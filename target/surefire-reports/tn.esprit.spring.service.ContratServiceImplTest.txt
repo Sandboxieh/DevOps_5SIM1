@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: tn.esprit.spring.service.ContratServiceImplTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 16.656 sec <<< FAILURE! - in tn.esprit.spring.service.ContratServiceImplTest
+testdeleteContrat(tn.esprit.spring.service.ContratServiceImplTest)  Time elapsed: 0.078 sec  <<< ERROR!
+org.springframework.dao.EmptyResultDataAccessException: No class tn.esprit.spring.entities.Contrat entity with id 2 exists!
+	at tn.esprit.spring.service.ContratServiceImplTest.testdeleteContrat(ContratServiceImplTest.java:63)
+

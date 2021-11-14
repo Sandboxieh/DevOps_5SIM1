@@ -1,66 +1,67 @@
 package tn.esprit.spring.entities;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
-public class Mission implements Serializable {
-
-	private static final long serialVersionUID = -5369734855993305723L;
+@Table (name = "T_MISSION")
+public class Mission implements Serializable{
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3537594150972176592L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@Column(name="ID")
+	protected Long idMission;
 	
-	private String name;
+	@Column(name="NAME")
+	protected String nameMission;
 	
-	private String description;
+	@Column(name="DESCRIPTION")
+	protected String descriptionMission;
+
+	@OneToMany (mappedBy="mission", cascade = CascadeType.ALL)
+	private Set<Timesheet> timesheet;
 	
 	@ManyToOne
-	private Departement departement;
-	
-	@OneToMany(mappedBy="mission")
-	private  List<Timesheet> timesheets;
-	
-	public Mission() {
-		super();
+	Departement departement;
+
+	public Long getIdMission() {
+		return idMission;
 	}
 
-	public Mission(String name, String description){
-		this.name = name;
-		this.description = description;
-	}
-	
-
-	public int getId() {
-		return id;
+	public void setIdMission(Long idMission) {
+		this.idMission = idMission;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public String getNameMission() {
+		return nameMission;
 	}
 
-	public String getName() {
-		return name;
+	public void setNameMission(String nameMission) {
+		this.nameMission = nameMission;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public String getDescriptionMission() {
+		return descriptionMission;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescriptionMission(String descriptionMission) {
+		this.descriptionMission = descriptionMission;
 	}
 
 	public Departement getDepartement() {
@@ -71,14 +72,33 @@ public class Mission implements Serializable {
 		this.departement = departement;
 	}
 
-	public List<Timesheet> getTimesheets() {
-		return timesheets;
+	public Mission() {
+		super();
 	}
 
-	public void setTimesheets(List<Timesheet> timesheets) {
-		this.timesheets = timesheets;
+	public Set<Timesheet> getTimesheet() {
+		return timesheet;
+	}
+
+	public void setTimesheet(Set<Timesheet> timesheet) {
+		this.timesheet = timesheet;
+	}
+
+	public Mission(Long idMission, String nameMission, String descriptionMission,
+			Set<Timesheet> timesheet, Departement departement) {
+		super();
+		this.idMission = idMission;
+		this.nameMission = nameMission;
+		this.descriptionMission = descriptionMission;
+		this.timesheet = timesheet;
+		this.departement = departement;
+	}
+
+	public Mission(String nameMission, String descriptionMission) {
+		super();
+		this.nameMission = nameMission;
+		this.descriptionMission = descriptionMission;
 	}
 	
 	
-
 }

@@ -1,8 +1,11 @@
 package tn.esprit.spring.entities;
 
-import java.io.Serializable;
-import java.util.List;
 
+import java.io.Serializable;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,70 +13,58 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import javax.persistence.Table;
 
 @Entity
+@Table (name = "T_DEPARTEMENT")
 public class Departement implements Serializable {
-
-	private static final long serialVersionUID = -357738161698377833L;
-
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7049001702100456716L;
+	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@Column(name="ID")
+	private long idDepartement;
 	
-	private String name;
+	@Column(name="NAME")
+	private String nameDepartement;
 	
-	//@JsonManagedReference 
-	@JsonIgnore
-	@ManyToMany
-	private List<Employe> employes;
 	
-	@OneToMany(mappedBy="departement")
-	private List<Mission> missions;
-	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="departement")
+	private Set<Mission> mission;
+
 	@ManyToOne
-	private Entreprise entreprise;
-
-	public Departement() {
-		super();
-	}
+	Entreprise entreprise;
 	
-	public Departement(String name) {
-		this.name = name;
-	}
-	
-	public int getId() {
-		return id;
+	@ManyToMany(cascade = CascadeType.ALL)
+	private Set<Employe> employe;
+
+
+	public Long getIdDepartement() {
+		return idDepartement;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdDepartement(Long idDepartement) {
+		this.idDepartement = idDepartement;
 	}
 
-	public String getName() {
-		return name;
+	public String getNameDepartement() {
+		return nameDepartement;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNameDepartement(String nameDepartement) {
+		this.nameDepartement = nameDepartement;
 	}
 
-	public List<Employe> getEmployes() {
-		return employes;
+	public Set<Mission> getMission() {
+		return mission;
 	}
 
-	public void setEmployes(List<Employe> employes) {
-		this.employes = employes;
-	}
-
-	public List<Mission> getMissions() {
-		return missions;
-	}
-
-	public void setMissions(List<Mission> missions) {
-		this.missions = missions;
+	public void setMission(Set<Mission> mission) {
+		this.mission = mission;
 	}
 
 	public Entreprise getEntreprise() {
@@ -83,7 +74,56 @@ public class Departement implements Serializable {
 	public void setEntreprise(Entreprise entreprise) {
 		this.entreprise = entreprise;
 	}
+
+
+
+	public Set<Employe> getEmploye() {
+		return employe;
+	}
+
+	public void setEmploye(Set<Employe> employe) {
+		this.employe = employe;
+	}
+
+	public void setIdDepartement(long idDepartement) {
+		this.idDepartement = idDepartement;
+	}
+
+	public Departement() {
+		super();
+	}
+
+	public Departement(Long idDepartement, String nameDepartement, Set<Mission> mission,
+			Entreprise entreprise, Set<Employe> employe) {
+		super();
+		this.idDepartement = idDepartement;
+		this.nameDepartement = nameDepartement;
+		this.mission = mission;
+		this.entreprise = entreprise;
+		this.employe = employe;
+	}
+
+	public Departement(String nameDepartement) {
+		super();
+		this.nameDepartement = nameDepartement;
+	}
 	
 	
 
+	public Departement(long idDepartement, String nameDepartement, Entreprise entreprise) {
+		super();
+		this.idDepartement = idDepartement;
+		this.nameDepartement = nameDepartement;
+		this.entreprise = entreprise;
+	}
+
+	public Object getId() {
+	
+		return null;
+	}
+
+	
+	
+	
+	
 }
