@@ -53,7 +53,7 @@ public class ContratServiceImpl implements IContratService {
 			l.error("Error in  retrieveAllContrats() with Error: "+ e);
 		}
 
-		return Contrats;
+		return contrats;
 	} 
 
 	@Override
