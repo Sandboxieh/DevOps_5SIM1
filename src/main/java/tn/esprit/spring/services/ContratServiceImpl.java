@@ -4,7 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import tn.esprit.spring.entities.Contrat;
 import tn.esprit.spring.repository.ContratRepository;
 
@@ -24,8 +25,8 @@ public class ContratServiceImpl implements IContratService {
 			
 			L.info("In Method retrieveAllContrats :");
 			contrats = (List<Contrat>) contratRepository.findAll();  
-			for (Contrat : contrats) {
-				L.debug("connexion à la DB OK :");
+			for (Contrat contrat: contrats) {
+				L.debug("connexion à la DB OK :"+contrat);
 				  
 			} 
 			L.info("Out of Method retrieveAllContrats with Sucess");

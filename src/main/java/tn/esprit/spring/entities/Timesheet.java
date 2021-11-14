@@ -2,7 +2,7 @@ package tn.esprit.spring.entities;
 
 import java.io.Serializable;
 
-import javax.persistence.EmbeddedId;
+
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -12,8 +12,7 @@ public class Timesheet implements Serializable{
 
 	private static final long serialVersionUID = 3876346912862238239L;
 
-	@EmbeddedId
-	private TimesheetPK timesheetPK;
+
 	
 	//idMission est a la fois primary key et foreign key
 	@ManyToOne
@@ -38,13 +37,6 @@ public class Timesheet implements Serializable{
 		this.isValide = isValide;
 	}
 
-	public TimesheetPK getTimesheetPK() {
-		return timesheetPK;
-	}
-
-	public void setTimesheetPK(TimesheetPK timesheetPK) {
-		this.timesheetPK = timesheetPK;
-	}
 
 	public Mission getMission() {
 		return mission;
