@@ -29,6 +29,7 @@ public class ContratServiceImplTest {
 	
 		@Test
 		public void testAjouterContrat() {
+		l.debug("ADD CONTRACT TEST");
 		Contrat contrat = new Contrat() ;
 		//contrat.setReferenceContrat((long) 1);
 		contrat.setDateDebutContrat(null);
@@ -36,13 +37,16 @@ public class ContratServiceImplTest {
 		contrat.setSalaire(1500);
 		assertNotNull(contrat);
 		cs.ajouterContrat(contrat);	
+		l.debug("CONTRAT ADDED SUCCESFULY");
 		}
 	
 		
 	
 		@Test
 		public void testretrieveAllContrats(){
+			l.debug("RETREIVING ALL CONTRACTs");
 			cs.retrieveAllContrats();
+			l.debug("CONTRACTS RETREIVED SUCCESFULY");
 		}
 		 
 		
@@ -59,9 +63,9 @@ public class ContratServiceImplTest {
 
 		 @Test
 		public void testdeleteContrat() {
-	
+	    l.debug("TESTING DELETE CONTRACT");
 		cs.deleteContratById((long) 2);
-		
+		l.debug("CONTRACT DELETED SUCCESFULY");
 		} 
 	
 
