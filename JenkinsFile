@@ -18,13 +18,11 @@ agent any
 			}
 		}
 
-
 		 stage ("clean"){
 		 	steps{
 		 		bat """mvn clean """
 		 	}
 		 }
-
 
  		 stage ("creation de livrable"){
 		 	steps{
@@ -51,8 +49,6 @@ agent any
 		 	}
 		 }
 	
-
-
 
 	
 		stage('email'){
