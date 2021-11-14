@@ -49,7 +49,7 @@ public class DepartementTest {
 	  @Test
 	  public void testUpdate () {
 		  Departement d=depService.getDepartementById(14);
-			d.setNameDepartement("Alaa"+" ");
+			d.setNameDepartement("Alaa");
 			Departement dm= depService.updateDepartement(d);
 			Assert.assertEquals(d.getNameDepartement(), dm.getNameDepartement());
 	  	
