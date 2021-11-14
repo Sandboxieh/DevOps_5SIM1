@@ -52,7 +52,7 @@ agent any
 	
 
 	
-		stage('email'){
+		stage('Sending email notification'){
 			steps{
 			mail bcc: '', body: 'Build Success', cc: '', from: '', replyTo: '', subject: 'Jenkins', to: 'sandiehftw@gmail.com'
 			}
