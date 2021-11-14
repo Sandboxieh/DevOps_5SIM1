@@ -1,14 +1,7 @@
 pipeline{
 
 
-environment
-{
-registry = "alaaguissouma/timesheet"
-registryCredential= 'dockerHub'
-dockerImage = ''
-}
-
-agent any
+agent any 
 	
 	stages{
 		stage ('Checkout GIT'){
@@ -19,7 +12,7 @@ agent any
 			}
 		}
 
-		stage ("Verification du version Maven"){
+		stage ("Verification du  version Maven"){
 			steps{
 				bat """mvn -version"""
 			}
@@ -52,32 +45,21 @@ agent any
 		 	}
 		 }
 
-		 stage ("Deploiement de livrable vers Nexus"){
+		 stage ("Deploiement "){
 		 	steps{
 		 		bat """mvn clean package -Dmaven.test.failure.ignore=true deploy:deploy-file -DgroupId=tn.esprit.spring -DartifactId=timesheet -Dversion=1.0-SNAPSHOT -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-snapshots/ -Dfile=target/timesheet-1.0-SNAPSHOT.jar"""
 		 	}
 		 }
-	
-
 
 	
 		stage('Sending Email'){
 			steps{
-			mail bcc: '', body: 'Build Success', cc: '', from: '', replyTo: '', subject: 'Jenkins Pipeline', to: 'sandiehftw@gmail.com'
+			mail bcc: '', body: 'Build Success', cc: '', from: '', replyTo: '', subject: 'Jenkins', to: 'sandiehftw@gmail.com'
 			}
 		}
 	}
-		stage('Building our image') {
-          steps { script { dockerImage= docker.build registry + ":$BUILD_NUMBER" } }
-          }
+	
 
-        stage('Deploy our image') {
-          steps { script { docker.withRegistry( '', registryCredential) { dockerImage.push() } } }
-          }
-
-        stage('Cleaning up') {
-          steps { bat "docker rmi $registry:$BUILD_NUMBER" }
-          }
 
 	post{
 		success{
