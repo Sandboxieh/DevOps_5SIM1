@@ -17,6 +17,7 @@ agent any
 				bat """mvn -version"""
 			}
 		}
+		
 
 		 stage ("clean"){
 		 	steps{
