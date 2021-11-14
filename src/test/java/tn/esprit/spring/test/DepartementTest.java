@@ -1,7 +1,6 @@
 package tn.esprit.spring.test;
 
 import java.util.List;
-
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

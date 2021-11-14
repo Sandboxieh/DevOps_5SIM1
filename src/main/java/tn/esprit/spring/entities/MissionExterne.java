@@ -1,12 +1,11 @@
 package tn.esprit.spring.entities;
 
-import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Entity;
 
 @Entity
-public class MissionExterne extends Mission implements Serializable{
+public class MissionExterne extends Mission{
 	
 
 	/**
