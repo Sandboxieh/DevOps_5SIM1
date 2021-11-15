@@ -702,3 +702,75 @@
 2021-11-15 01:04:07.457  INFO 9784 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2021-11-15 01:04:07.463  INFO 9784 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2021-11-15 01:04:07.497  INFO 9784 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-11-15 01:06:29.685  INFO 1520 --- [main] t.e.s.service.ContratServiceImplTest     : Starting ContratServiceImplTest on DESKTOP-B9SLOBR with PID 1520 (started by DESKTOP-B9SLOBR$ in C:\ProgramData\Jenkins\.jenkins\workspace\timesheet_pipeline)
+2021-11-15 01:06:29.689  INFO 1520 --- [main] t.e.s.service.ContratServiceImplTest     : No active profile set, falling back to default profiles: default
+2021-11-15 01:06:31.618  INFO 1520 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-11-15 01:06:31.810  INFO 1520 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 165ms. Found 1 repository interfaces.
+2021-11-15 01:06:32.915  INFO 1520 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-11-15 01:06:33.563  INFO 1520 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-11-15 01:06:33.781  INFO 1520 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.8.Final}
+2021-11-15 01:06:34.233  INFO 1520 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2021-11-15 01:06:35.705  INFO 1520 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-11-15 01:06:36.187  INFO 1520 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-11-15 01:06:36.238  INFO 1520 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-11-15 01:06:39.006  INFO 1520 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-11-15 01:06:39.029  INFO 1520 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-11-15 01:06:40.617  WARN 1520 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-11-15 01:06:41.370  INFO 1520 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-11-15 01:06:42.480  INFO 1520 --- [main] t.e.s.service.ContratServiceImplTest     : Started ContratServiceImplTest in 13.78 seconds (JVM running for 16.16)
+2021-11-15 01:06:42.749  INFO 1520 --- [main] t.e.spring.services.ContratServiceImpl   : In retrieveAllContrats() 
+2021-11-15 01:06:43.309  INFO 1520 --- [main] t.e.spring.services.ContratServiceImpl   : Out of retrieveAllContrats() with success 
+2021-11-15 01:06:43.364  INFO 1520 --- [main] t.e.spring.services.ContratServiceImpl   : In retrieveContratByID() : 
+2021-11-15 01:06:43.387  INFO 1520 --- [main] t.e.spring.services.ContratServiceImpl   : Out of retrieveContratByID() : found Contract : tn.esprit.spring.entities.Contrat@445058e8
+2021-11-15 01:06:43.404  INFO 1520 --- [main] t.e.spring.services.ContratServiceImpl   : In retrieveContratByID() : 
+2021-11-15 01:06:43.409  INFO 1520 --- [main] t.e.spring.services.ContratServiceImpl   : Out of retrieveContratByID() : found Contract : tn.esprit.spring.entities.Contrat@4a4ff5ed
+2021-11-15 01:06:43.412  INFO 1520 --- [main] t.e.spring.services.ContratServiceImpl   : In retrieveAllContrats() 
+2021-11-15 01:06:43.421  INFO 1520 --- [main] t.e.spring.services.ContratServiceImpl   : Out of retrieveAllContrats() with success 
+2021-11-15 01:06:43.424  INFO 1520 --- [main] t.e.spring.services.ContratServiceImpl   : In updateContract() : 
+2021-11-15 01:06:43.450  INFO 1520 --- [main] t.e.spring.services.ContratServiceImpl   : Out of updateContract() : updated Contract: tn.esprit.spring.entities.Contrat@6921cfa
+2021-11-15 01:06:43.465  INFO 1520 --- [main] t.e.spring.services.ContratServiceImpl   : In retrieveAllContrats() 
+2021-11-15 01:06:43.472  INFO 1520 --- [main] t.e.spring.services.ContratServiceImpl   : Out of retrieveAllContrats() with success 
+2021-11-15 01:06:43.475  INFO 1520 --- [main] t.e.spring.services.ContratServiceImpl   : In deleteContrat() : 
+2021-11-15 01:06:43.493  INFO 1520 --- [main] t.e.spring.services.ContratServiceImpl   : Out of deleteContrat() : deleted Contract id : 16
+2021-11-15 01:06:43.540  INFO 1520 --- [main] t.e.spring.services.ContratServiceImpl   : In addContract() : 
+2021-11-15 01:06:43.564  INFO 1520 --- [main] t.e.spring.services.ContratServiceImpl   : Out of addContract() : saved Contract: tn.esprit.spring.entities.Contrat@4d065e1a
+2021-11-15 01:06:43.589  INFO 1520 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-11-15 01:06:43.591  INFO 1520 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-11-15 01:06:43.596  INFO 1520 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-11-15 01:06:43.620  INFO 1520 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-11-15 01:07:35.082  INFO 20588 --- [main] t.e.s.service.ContratServiceImplTest     : Starting ContratServiceImplTest on DESKTOP-B9SLOBR with PID 20588 (started by DESKTOP-B9SLOBR$ in C:\ProgramData\Jenkins\.jenkins\workspace\timesheet_pipeline)
+2021-11-15 01:07:35.087  INFO 20588 --- [main] t.e.s.service.ContratServiceImplTest     : No active profile set, falling back to default profiles: default
+2021-11-15 01:07:37.027  INFO 20588 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-11-15 01:07:37.208  INFO 20588 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 154ms. Found 1 repository interfaces.
+2021-11-15 01:07:38.282  INFO 20588 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-11-15 01:07:39.018  INFO 20588 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-11-15 01:07:39.278  INFO 20588 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.8.Final}
+2021-11-15 01:07:39.726  INFO 20588 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2021-11-15 01:07:41.169  INFO 20588 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-11-15 01:07:41.640  INFO 20588 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-11-15 01:07:41.692  INFO 20588 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-11-15 01:07:44.496  INFO 20588 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-11-15 01:07:44.518  INFO 20588 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-11-15 01:07:46.231  WARN 20588 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-11-15 01:07:46.989  INFO 20588 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-11-15 01:07:47.997  INFO 20588 --- [main] t.e.s.service.ContratServiceImplTest     : Started ContratServiceImplTest in 13.839 seconds (JVM running for 16.094)
+2021-11-15 01:07:48.300  INFO 20588 --- [main] t.e.spring.services.ContratServiceImpl   : In retrieveAllContrats() 
+2021-11-15 01:07:48.873  INFO 20588 --- [main] t.e.spring.services.ContratServiceImpl   : Out of retrieveAllContrats() with success 
+2021-11-15 01:07:48.932  INFO 20588 --- [main] t.e.spring.services.ContratServiceImpl   : In retrieveContratByID() : 
+2021-11-15 01:07:48.966  INFO 20588 --- [main] t.e.spring.services.ContratServiceImpl   : Out of retrieveContratByID() : found Contract : tn.esprit.spring.entities.Contrat@39acd1f1
+2021-11-15 01:07:48.987  INFO 20588 --- [main] t.e.spring.services.ContratServiceImpl   : In retrieveContratByID() : 
+2021-11-15 01:07:48.994  INFO 20588 --- [main] t.e.spring.services.ContratServiceImpl   : Out of retrieveContratByID() : found Contract : tn.esprit.spring.entities.Contrat@44ddb518
+2021-11-15 01:07:48.997  INFO 20588 --- [main] t.e.spring.services.ContratServiceImpl   : In retrieveAllContrats() 
+2021-11-15 01:07:49.009  INFO 20588 --- [main] t.e.spring.services.ContratServiceImpl   : Out of retrieveAllContrats() with success 
+2021-11-15 01:07:49.016  INFO 20588 --- [main] t.e.spring.services.ContratServiceImpl   : In updateContract() : 
+2021-11-15 01:07:49.044  INFO 20588 --- [main] t.e.spring.services.ContratServiceImpl   : Out of updateContract() : updated Contract: tn.esprit.spring.entities.Contrat@5f3f57ff
+2021-11-15 01:07:49.063  INFO 20588 --- [main] t.e.spring.services.ContratServiceImpl   : In retrieveAllContrats() 
+2021-11-15 01:07:49.074  INFO 20588 --- [main] t.e.spring.services.ContratServiceImpl   : Out of retrieveAllContrats() with success 
+2021-11-15 01:07:49.078  INFO 20588 --- [main] t.e.spring.services.ContratServiceImpl   : In deleteContrat() : 
+2021-11-15 01:07:49.098  INFO 20588 --- [main] t.e.spring.services.ContratServiceImpl   : Out of deleteContrat() : deleted Contract id : 17
+2021-11-15 01:07:49.149  INFO 20588 --- [main] t.e.spring.services.ContratServiceImpl   : In addContract() : 
+2021-11-15 01:07:49.179  INFO 20588 --- [main] t.e.spring.services.ContratServiceImpl   : Out of addContract() : saved Contract: tn.esprit.spring.entities.Contrat@2493eec6
+2021-11-15 01:07:49.205  INFO 20588 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-11-15 01:07:49.208  INFO 20588 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-11-15 01:07:49.215  INFO 20588 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-11-15 01:07:49.250  INFO 20588 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
