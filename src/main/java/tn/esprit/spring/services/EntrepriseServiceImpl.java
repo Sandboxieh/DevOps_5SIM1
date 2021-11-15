@@ -102,5 +102,21 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 			return null;
 		}
 	}
+
+	public List<Entreprise> getAllEntreprises() {
+		List<Entreprise> listEntreprises=new ArrayList<>();
+		try
+		{
+			l.info("methode getAllEntreprises() ");
+			l.debug("je vais recuperer la liste de tous les entreprises");
+		 listEntreprises=(List<Entreprise>) EntrepriseRepository.findAll();
+			l.debug("la liste des Entreprisees est"+listEntreprises);
+			l.info("Out getAllEntreprises with success");
+		}
+		catch (Exception e) {	
+			l.error("erreur In getAllEntreprises : " +e);
+		}
+		return listEntreprises;
+	}
 	
 }

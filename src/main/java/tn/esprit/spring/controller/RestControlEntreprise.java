@@ -60,4 +60,12 @@ public class RestControlEntreprise {
 	public List<String> getAllDepartementsNamesByEntreprise(@PathVariable("identreprise") int entrepriseId) {
 		return ientrepriseservice.getAllDepartementsNamesByEntreprise(entrepriseId);
 	}
+
+	 // URL : http://localhost:8081/SpringMVC/servlet/getAllEntreprises
+	 @GetMapping(value = "/getAllEntreprises")
+	 @ResponseBody
+	 public List<Entreprise> getAllEntreprises() {
+		 
+		 return ientrepriseservice.getAllEntreprises();
+	 }
 }
