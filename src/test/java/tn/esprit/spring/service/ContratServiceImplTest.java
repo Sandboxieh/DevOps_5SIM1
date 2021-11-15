@@ -66,7 +66,7 @@ public class ContratServiceImplTest {
 			ct.setDateDebutContrat(new java.util.Date());
 			List<Contrat> listContrats =cs.retrieveAllContrats();
 			Contrat cc =listContrats.get(listContrats.size()-1);
-			ct.setSalaire((cc.getReferenceContrat()-1)*1000);
+			ct.setSalaire((cc.getReferenceContrat()-1)*100);
 			Contrat u_saved=cs.updateContrat(ct);
 			Assertions.assertNotEquals(ct,u_saved);
 			
