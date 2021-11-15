@@ -31,17 +31,10 @@ public class EmployeServiceImpl implements IEmployeService {
 	@Autowired
 	TimesheetRepository timesheetRepository;
 
-	@Override
-	public Employe authenticate(String login, String password) {
-		return employeRepository.getEmployeByEmailAndPassword(login, password);
-	}
-
-	@Override
-	public int addOrUpdateEmploye(Employe employe) {
+	public int ajouterEmploye(Employe employe) {
 		employeRepository.save(employe);
 		return employe.getId();
 	}
-
 
 	public void mettreAjourEmailByEmployeId(String email, int employeId) {
 		Employe employe = employeRepository.findById(employeId).get();
@@ -63,10 +56,8 @@ public class EmployeServiceImpl implements IEmployeService {
 		}else{
 
 			depManagedEntity.getEmployes().add(employeManagedEntity);
-		}
 
-		// à ajouter? 
-		deptRepoistory.save(depManagedEntity); 
+		}
 
 	}
 	@Transactional
@@ -81,9 +72,7 @@ public class EmployeServiceImpl implements IEmployeService {
 				break;//a revoir
 			}
 		}
-	} 
-	
-	// Tablesapce (espace disque) 
+	}
 
 	public int ajouterContrat(Contrat contrat) {
 		contratRepoistory.save(contrat);
@@ -96,14 +85,13 @@ public class EmployeServiceImpl implements IEmployeService {
 
 		contratManagedEntity.setEmploye(employeManagedEntity);
 		contratRepoistory.save(contratManagedEntity);
-
+		
 	}
 
 	public String getEmployePrenomById(int employeId) {
 		Employe employeManagedEntity = employeRepository.findById(employeId).get();
 		return employeManagedEntity.getPrenom();
 	}
-	 
 	public void deleteEmployeById(int employeId)
 	{
 		Employe employe = employeRepository.findById(employeId).get();
@@ -127,12 +115,12 @@ public class EmployeServiceImpl implements IEmployeService {
 	public int getNombreEmployeJPQL() {
 		return employeRepository.countemp();
 	}
-
+	
 	public List<String> getAllEmployeNamesJPQL() {
 		return employeRepository.employeNames();
 
 	}
-
+	
 	public List<Employe> getAllEmployeByEntreprise(Entreprise entreprise) {
 		return employeRepository.getAllEmployeByEntreprisec(entreprise);
 	}
@@ -142,9 +130,9 @@ public class EmployeServiceImpl implements IEmployeService {
 
 	}
 	public void deleteAllContratJPQL() {
-		employeRepository.deleteAllContratJPQL();
+         employeRepository.deleteAllContratJPQL();
 	}
-
+	
 	public float getSalaireByEmployeIdJPQL(int employeId) {
 		return employeRepository.getSalaireByEmployeIdJPQL(employeId);
 	}
@@ -152,14 +140,14 @@ public class EmployeServiceImpl implements IEmployeService {
 	public Double getSalaireMoyenByDepartementId(int departementId) {
 		return employeRepository.getSalaireMoyenByDepartementId(departementId);
 	}
-
+	
 	public List<Timesheet> getTimesheetsByMissionAndDate(Employe employe, Mission mission, Date dateDebut,
 			Date dateFin) {
 		return timesheetRepository.getTimesheetsByMissionAndDate(employe, mission, dateDebut, dateFin);
 	}
 
 	public List<Employe> getAllEmployes() {
-		return (List<Employe>) employeRepository.findAll();
+				return (List<Employe>) employeRepository.findAll();
 	}
 
 }
