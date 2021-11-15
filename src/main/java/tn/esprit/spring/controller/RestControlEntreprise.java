@@ -61,11 +61,5 @@ public class RestControlEntreprise {
 		return ientrepriseservice.getAllDepartementsNamesByEntreprise(entrepriseId);
 	}
 
-	 // URL : http://localhost:8081/SpringMVC/servlet/getAllEntreprises
-	 @GetMapping(value = "/getAllEntreprises")
-	 @ResponseBody
-	 public List<Entreprise> getAllEntreprises() {
-		 
-		 return ientrepriseservice.getAllEntreprises();
-	 }
+
 }
