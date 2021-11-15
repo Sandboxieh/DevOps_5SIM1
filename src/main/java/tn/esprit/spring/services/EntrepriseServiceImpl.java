@@ -102,7 +102,7 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 			return null;
 		}
 	}
-
+	@Transactional
 	public List<Entreprise> getAllEntreprises() {
 		List<Entreprise> listEntreprises=new ArrayList<>();
 		try
