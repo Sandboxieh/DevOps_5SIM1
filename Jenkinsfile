@@ -1,8 +1,8 @@
 pipeline {
 
     environment { 
-        registry = "hassenbenabid/timesheet" 
-        registryCredential = 'hassenbenabid' 
+        registry = "dhiam/timesheet" 
+        registryCredential = 'dhiam' 
         dockerImage = '' 
     }
     
@@ -16,12 +16,12 @@ pipeline {
             //       }
             // } 
 
-             stage('pull and run mysql') { 
-                 steps { 
-                     bat "docker container run --name mysqldb --network timesheet-network  -e MYSQL_ROOT_PASSWORD=root -e  //MYSQL_DATABASE=timesheet -d mysql:5.6"
+            stage('pull and run mysql') { 
+                steps { 
+                    bat "docker container run --name mysqldb --network timesheet-network  -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=timesheet -d mysql:5.6"
 
-                 }
-            }   
+                }
+           }   
 			stage('Package'){
 				steps{
 					bat "mvn package -DskipTests"
@@ -30,7 +30,7 @@ pipeline {
 
 			// stage('Test'){
 			// 	steps{
-			// 		bat "mvn test"m
+			// 		bat "mvn test"
 			// 	}				
 			// }
 
@@ -54,7 +54,7 @@ pipeline {
                 } 
             }
 
-       /*    stage('Deploy our image') { 
+           stage('Deploy our image') { 
                 steps { 
                     script { 
                     docker.withRegistry( '', registryCredential ) { 
@@ -64,7 +64,7 @@ pipeline {
              }
            } 
           
-    /*       stage('Cleaning up') { 
+           stage('Cleaning up') { 
                 steps { 
                     bat "docker rmi $registry:$BUILD_NUMBER" 
                //   bat "docker rmi mysqldb" 
@@ -79,7 +79,7 @@ pipeline {
                     }
                 } 
              }
-           } */
+           } 
 
         //     stage('run images') { 
         //         steps { 
@@ -96,7 +96,7 @@ pipeline {
         
            stage('run images') { 
                 steps { 
-                    bat "docker container run --network timesheet-network --name timesheet-container -p 8088:8088 -d $registry:$BUILD_NUMBER"
+                    bat "docker container run --network timesheet-network --name timesheet-container -p 8083:8083 -d $registry:$BUILD_NUMBER"
                 }
            } 
 	}

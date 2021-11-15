@@ -1,1 +1,1 @@
-# DevOps-Timesheet
+# TimeSheet-DevOps

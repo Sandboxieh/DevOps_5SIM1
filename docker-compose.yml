@@ -1,0 +1,37 @@
+version: '3.1'
+
+services:
+
+  myapp-mysql:
+    image: mysql:5.6
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=timesheet
+    ports:
+      - 3306:3306
+    networks:
+      - app-mysql
+
+  timesheet:
+  
+    image: timesheet
+    build: ./
+    restart: on-failure
+    depends_on:
+      - myapp-mysql
+    ports:
+      - 8083:8083
+    networks:
+      - app-mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://myapp-mysql:3306/timesheet?autoReconnect=true&useSSL=false
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    volumes:
+      - .m2:/root/.m2
+    stdin_open: true
+    tty: true
+    
+networks:
+  app-mysql: 
+   
