@@ -2,7 +2,7 @@ pipeline {
 
     environment { 
         registry = "hassenbenabid/timesheet" 
-        registryCredential = 'hassenbenabid' 
+        registryCredential = 'dockerhub-cred' 
         dockerImage = '' 
     }
     
