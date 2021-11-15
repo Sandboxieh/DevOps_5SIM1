@@ -18,7 +18,7 @@ pipeline {
 
              stage('pull and run mysql') { 
                  steps { 
-                     bat "docker container run --name mysqldb --network timesheet-network  -e MYSQL_ROOT_PASSWORD=root -e  //MYSQL_DATABASE=timesheet -d mysql:5.6"
+                     bat "docker container run --name mysqldb --network timesheet-network  -e MYSQL_ROOT_PASSWORD=root -e  MYSQL_DATABASE=timesheet -d mysql:5.6"
 
                  }
             }   
