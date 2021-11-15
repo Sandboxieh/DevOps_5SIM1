@@ -85,7 +85,7 @@ agent any
                     bat "docker container run --network timesheet-network --name timesheet-container -p 8083:8083 -d $registry:$BUILD_NUMBER"
                 }
            } 
-	}
+	
 
 		stage('Sending Email'){
 			steps{
