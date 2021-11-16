@@ -16,7 +16,7 @@ pipeline {
             //       }
             // } 
 
-             stage('pull and run mysql') { 
+             stage('Mysql pull and run') { 
                  steps { 
                      bat "docker container run --name mysqldb --network timesheet-network  -e MYSQL_ROOT_PASSWORD=root -e  MYSQL_DATABASE=timesheet -d mysql:5.6"
 
@@ -46,7 +46,7 @@ pipeline {
                   }
             }
             
-            stage('Building our image') { 
+            stage('Building image') { 
                 steps { 
                     script { 
                     dockerImage = docker.build("$registry:$BUILD_NUMBER")
@@ -54,7 +54,7 @@ pipeline {
                 } 
             }
 
-          stage('Deploy our image') { 
+          stage('Deploy image') { 
                 steps { 
                     script { 
                     docker.withRegistry( '', registryCredential ) { 
@@ -88,13 +88,5 @@ pipeline {
            } 
 	}
 	
-	  post{
-            always{
-                emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
-        
-                cleanWs()
-        }
-    }
-	 
 
 }

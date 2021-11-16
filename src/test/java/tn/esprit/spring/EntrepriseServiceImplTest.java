@@ -35,20 +35,20 @@ public class EntrepriseServiceImplTest {
 	
 	@Test
 	public void testAjouterEntreprise()  {  
-		l.info("In methode testAjouterEntreprise()");
+		l.info("Started testAjouterEntreprise()");
 		 idE=ientrepriseservice.ajouterEntreprise(new EntrepriseDTO("Devops","Devops"));
 		assertNotNull(idE);
-		l.info("Out methode testAjouterEntreprise()");
+		l.info("Finished testAjouterEntreprise()");
 	}
 	
 	// Tester la méthode qui va envoyer l'entreprise dont son id est passé en parametre
 	
 	@Test
 	public void testGetEntrpriseById() {
-		l.info("In methode testGetEntrpriseById()");
+		l.info("Started testGetEntrpriseById()");
 		Entreprise e =ientrepriseservice.getEntrepriseById(idE); 
 		assertNotNull(e);
-		l.info("Out methode testGetEntrpriseById()");
+		l.info("Finished testGetEntrpriseById()");
 	}
 	
 	// Tester la méthode qui va envoyer toute la liste des noms des départements selon l'id de l'entreprise
@@ -56,10 +56,10 @@ public class EntrepriseServiceImplTest {
 	
 	@Test
 	public void testGetAllDepartementsNamesByEntreprise() {
-		l.info("In methode testGetAllDepartementsNamesByEntreprise()");
+		l.info("started testGetAllDepartementsNamesByEntreprise()");
 		List<String> depNames = ientrepriseservice.getAllDepartementsNamesByEntreprise(idE);
 		assertNotNull(depNames);
-		l.info("Out methode testGetAllDepartementsNamesByEntreprise()");
+		l.info("finished testGetAllDepartementsNamesByEntreprise()");
 	}
 	
 	// Tester la méthode de supprimer de l'entreprise by id
@@ -67,12 +67,12 @@ public class EntrepriseServiceImplTest {
 	@Test
 	public void testDeleteEntrepriseById()
 	{
-		l.info("In methode testDeleteEntrepriseById()");
+		l.info("started testDeleteEntrepriseById()");
 		if(idE!=null){
 		int i = ientrepriseservice.deleteEntrepriseById(idE);
 		assertEquals(1, i);
 		}
-		l.info("Out methode testDeleteEntrepriseById()");
+		l.info("finished testDeleteEntrepriseById()");
 	}
 	
 }
