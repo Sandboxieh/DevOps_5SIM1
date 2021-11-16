@@ -25,20 +25,20 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
     EntrepriseConverter converter;
 	private static final Logger l = LogManager.getLogger(EntrepriseServiceImpl.class);
 	
-	// Méthode qui permet d'a
+	
 	
 	@Transactional
 	public Integer ajouterEntreprise(EntrepriseDTO entreprise) {
 		
 		try{
-			l.info("In methode ajouterEntreprise()");
+			l.info("started ajouterEntreprise()");
 			Entreprise en = converter.entrepriseTodo(entreprise);
 			entrepriseRepoistory.save(en);
-			l.debug("entreprise ajouté et portant la ref = "+entreprise.getId());
-			l.info("Out methode ajouterEntreprise()");
+			l.debug("entreprise added with id = "+entreprise.getId());
+			l.info("finished ajouterEntreprise()");
 			return entreprise.getId();
 		} catch (Exception e) {
-			l.error("erreur dans la methode ajouterEntreprise() :"+e);
+			l.error("error executing ajouterEntreprise() :"+e);
 			return null;
 		}	
 		
@@ -49,18 +49,18 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 	public List<String> getAllDepartementsNamesByEntreprise(int entrepriseId) {
 		List<String> depNames = new ArrayList<>();
 		try{
-			l.info("In methode getAllDepartementsNamesByEntreprise() : ");
+			l.info("started getAllDepartementsNamesByEntreprise() : ");
 			Optional<Entreprise> entrepriseManagedEntity = entrepriseRepoistory.findById(entrepriseId);
 			if(entrepriseManagedEntity.isPresent()) {
 				for(Departement dep : entrepriseManagedEntity.get().getDepartements()){
 					depNames.add(dep.getName());
 				}
 			}
-			l.debug("Récupération des departements");
-			l.info("Out methode getAllDepartementsNamesByEntreprise() ");
+			l.debug("fetching departements");
+			l.info("finished getAllDepartementsNamesByEntreprise() ");
 			return depNames;
 		} catch (Exception e) {
-			l.error("erreur dans la methode getAllDepartementsNamesByEntreprise() :"+e);
+			l.error("error executing getAllDepartementsNamesByEntreprise() :"+e);
 			depNames.clear();
 			return depNames;
 		}
@@ -70,16 +70,16 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 	@Transactional
 	public Integer deleteEntrepriseById(int entrepriseId) {
 		try {
-			l.info("In methode deleteEntrepriseById() ");
+			l.info("started deleteEntrepriseById() ");
 			Optional<Entreprise> entreprise=entrepriseRepoistory.findById(entrepriseId);
 			if (entreprise.isPresent()) {
 				entrepriseRepoistory.delete(entreprise.get());	
 			} 
-			l.debug("Supprission de l'entreprise avec l'id"+entrepriseId);
-			l.info("Out deleteEntrepriseById()");
+			l.debug("Deleted entreprise with id = "+entrepriseId);
+			l.info("finished deleteEntrepriseById()");
 			return 1;
 		} catch (Exception e) {
-			l.error("erreur methode deleteEntrepriseById() :" + e);
+			l.error("error executing deleteEntrepriseById() :" + e);
 			return 0;
 		}
 	}
@@ -89,16 +89,16 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 	public Entreprise getEntrepriseById(int entrepriseId) {
 		Entreprise en = null;
 		try {
-			l.info("In methode getEntrepriseById() : ");
+			l.info("started getEntrepriseById() : ");
 			Optional<Entreprise> entreprise = entrepriseRepoistory.findById(entrepriseId);
 			if (entreprise.isPresent()) {
 				en=entreprise.get();
 			}
-			l.debug("Récupération de l'entreprise par id");
-			l.info("Out methode getEntrepriseById() ");
+			l.debug("fetching entreprise by id");
+			l.info("finished getEntrepriseById() ");
 			return en;
 		} catch (Exception e) {
-			l.error("erreur methode deleteEntrepriseById() :" + e);
+			l.error("error executing deleteEntrepriseById() :" + e);
 			return null;
 		}
 	}
