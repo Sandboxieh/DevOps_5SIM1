@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: tn.esprit.spring.service.ContratServiceImplTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.426 sec - in tn.esprit.spring.service.ContratServiceImplTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 17.183 sec - in tn.esprit.spring.service.ContratServiceImplTest
