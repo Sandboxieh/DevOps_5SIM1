@@ -3,13 +3,14 @@ package tn.esprit.spring.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -27,12 +28,9 @@ public class Departement implements Serializable {
 	
 	//@JsonManagedReference 
 	@JsonIgnore
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<Employe> employes;
-	
-	@OneToMany(mappedBy="departement")
-	private List<Mission> missions;
-	
+	 
 	@ManyToOne
 	private Entreprise entreprise;
 
@@ -66,14 +64,6 @@ public class Departement implements Serializable {
 
 	public void setEmployes(List<Employe> employes) {
 		this.employes = employes;
-	}
-
-	public List<Mission> getMissions() {
-		return missions;
-	}
-
-	public void setMissions(List<Mission> missions) {
-		this.missions = missions;
 	}
 
 	public Entreprise getEntreprise() {

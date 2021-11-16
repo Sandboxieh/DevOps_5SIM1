@@ -6,14 +6,11 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -21,16 +18,18 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Employe implements Serializable {
 	
-	private static final long serialVersionUID = -1396669830860400871L;
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	//@SequenceGenerator(name="seq")
+	private Long id;
 	
 	private String prenom;
 	
+
 	private String nom;
-	
+		
 	//@Column(unique=true)
 	//@Pattern(regex=".+\@.+\..+")
 	private String email;
@@ -45,28 +44,21 @@ public class Employe implements Serializable {
 	
 	//@JsonBackReference  
 	@JsonIgnore
-	@ManyToMany(mappedBy="employes",fetch=FetchType.EAGER )
+	@ManyToMany(mappedBy="employes" )
 	//@NotNull
 	private List<Departement> departements;
 	
-	@JsonIgnore
-	//@JsonBackReference
-	@OneToOne(mappedBy="employe")
-	private Contrat contrat;
-	
-	@JsonIgnore
-	//@JsonBackReference
-	@OneToMany(mappedBy="employe")
-	private List<Timesheet> timesheets;
-	
+	@OneToOne
+	private Contrat contrat; 
 	
 	public Employe() {
 		super();
 	}
 	
 		
-	public Employe(int id, String prenom, String nom, String email, String password, boolean actif, Role role) {
+	public Employe(Long id, String prenom, String nom, String email, String password, boolean actif, Role role) {
 		super();
+		System.out.println("test"); 
 		this.id = id;
 		this.prenom = prenom;
 		this.nom = nom;
@@ -95,11 +87,11 @@ public class Employe implements Serializable {
 		this.role = role;
 	}
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -170,16 +162,7 @@ public class Employe implements Serializable {
 
 	public void setContrat(Contrat contrat) {
 		this.contrat = contrat;
-	}
-
-	public List<Timesheet> getTimesheets() {
-		return timesheets;
-	}
-
-	public void setTimesheets(List<Timesheet> timesheets) {
-		this.timesheets = timesheets;
-	}
-
+	} 
 
 	@Override
 	public String toString() {

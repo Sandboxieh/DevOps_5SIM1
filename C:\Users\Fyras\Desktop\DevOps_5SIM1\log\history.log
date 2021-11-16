@@ -1,0 +1,26 @@
+2021-11-16 01:50:42.295  WARN 28442 --- [main] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 5006 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2021-11-16 01:50:47.302  INFO 28442 --- [main] t.e.s.services.EmployeServiceImplTest    : Starting EmployeServiceImplTest using Java 1.8.0_212 on Moez-3.local with PID 28442 (started by moez in /Users/moez/Documents/GitHub/DevOps_5SIM1)
+2021-11-16 01:50:47.305  INFO 28442 --- [main] t.e.s.services.EmployeServiceImplTest    : No active profile set, falling back to default profiles: default
+2021-11-16 01:50:49.012  INFO 28442 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-11-16 01:50:49.101  INFO 28442 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-11-16 01:50:49.324  INFO 28442 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-11-16 01:50:49.655  INFO 28442 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2021-11-16 01:50:50.682  INFO 28442 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-11-16 01:50:51.548  WARN 28442 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-11-16 01:50:52.506  INFO 28442 --- [main] t.e.s.services.EmployeServiceImplTest    : Started EmployeServiceImplTest in 25.611 seconds (JVM running for 27.179)
+2021-11-16 01:50:52.800  INFO 28442 --- [main] t.e.spring.services.EmployeServiceImpl   : In retrieveAllEmployes() 
+2021-11-16 01:50:52.922  INFO 28442 --- [main] t.e.spring.services.EmployeServiceImpl   : Out of retrieveAllEmployes() with success 
+2021-11-16 01:50:52.950  INFO 28442 --- [main] t.e.spring.services.EmployeServiceImpl   : In addEmploye() : 
+2021-11-16 01:50:53.002  INFO 28442 --- [main] t.e.spring.services.EmployeServiceImpl   : Out of addEmploye() : saved Employe: Employe [id=10, prenom=Amira, nom=no name, email=elmoez.amira@esprit.tn, password=moezmoez, actif=true, role=ADMINISTRATEUR]
+2021-11-16 01:50:53.017  INFO 28442 --- [main] t.e.spring.services.EmployeServiceImpl   : In retrieveEmployeByID() : 
+2021-11-16 01:50:53.032  INFO 28442 --- [main] t.e.spring.services.EmployeServiceImpl   : Out of retrieveEmployeByID() : found Employe : Employe [id=1, prenom=Amira, nom=El Moez, email=elmoez.amira@esprit.tn, password=moezmoez, actif=true, role=ADMINISTRATEUR]
+2021-11-16 01:50:53.033  INFO 28442 --- [main] t.e.spring.services.EmployeServiceImpl   : In retrieveAllEmployes() 
+2021-11-16 01:50:53.036  INFO 28442 --- [main] t.e.spring.services.EmployeServiceImpl   : Out of retrieveAllEmployes() with success 
+2021-11-16 01:50:53.037  INFO 28442 --- [main] t.e.spring.services.EmployeServiceImpl   : In updateEmploye() : 
+2021-11-16 01:50:53.051  INFO 28442 --- [main] t.e.spring.services.EmployeServiceImpl   : Out of updateContract() : updated Employe: Employe [id=1, prenom=Amira, nom=El Moez, email=elmoez.amira@esprit.tn, password=moezmoez, actif=true, role=ADMINISTRATEUR]
+2021-11-16 01:50:53.056  INFO 28442 --- [main] t.e.spring.services.EmployeServiceImpl   : In retrieveEmployeByID() : 
+2021-11-16 01:50:53.060  INFO 28442 --- [main] t.e.spring.services.EmployeServiceImpl   : Out of retrieveEmployeByID() : found Employe : Employe [id=1, prenom=Amira, nom=El Moez, email=elmoez.amira@esprit.tn, password=moezmoez, actif=true, role=ADMINISTRATEUR]
+2021-11-16 01:50:53.066  INFO 28442 --- [main] t.e.spring.services.EmployeServiceImpl   : In retrieveAllEmployes() 
+2021-11-16 01:50:53.070  INFO 28442 --- [main] t.e.spring.services.EmployeServiceImpl   : Out of retrieveAllEmployes() with success 
+2021-11-16 01:50:53.071  INFO 28442 --- [main] t.e.spring.services.EmployeServiceImpl   : In deleteEmploye() : 
+2021-11-16 01:50:53.109  INFO 28442 --- [main] t.e.spring.services.EmployeServiceImpl   : Out of deleteEmploye() : deleted Employe id : 10
