@@ -45,7 +45,6 @@ public class DepartementTest {
 			L.log(Level.INFO, () ->"Retrieve departement : " +d);
 		}
 	
-	  
 	  @Test
 	  public void testUpdate () {
 		  Departement d=depService.getDepartementById(14);
